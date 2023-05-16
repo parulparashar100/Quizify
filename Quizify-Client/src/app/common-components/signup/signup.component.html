@@ -1,0 +1,69 @@
+  <div class="container">
+    <h1>Sign Up</h1> <!-- Added heading -->
+    
+    <form #signupForm="ngForm" (ngSubmit)="signup()" novalidate>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="First Name" id="firstName" name="firstName" #firstName="ngModel" class="form-control" [(ngModel)]="user.firstName" required maxlength="15">
+            <div *ngIf="firstName.errors?.['required'] && firstName.touched " class="text-danger mb-2">First Name is required</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Last Name" id="lastName" name="lastName" #lastName="ngModel" class="form-control" [(ngModel)]="user.lastName" required maxlength="15">
+            <div *ngIf="lastName.errors?.['required'] && lastName.touched " class="text-danger mb-2">Last Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email" id="email" name="email" #email="ngModel" class="form-control" [(ngModel)]="user.email" required email>
+        <div *ngIf="email.errors?.['required'] && email.touched" class="text-danger mb-2">Email is required</div>
+        <div *ngIf="email.errors?.['email'] && email.touched" class="text-danger mb-2">Please enter correct email</div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="password" placeholder="Password" id="password" name="password" #password="ngModel" class="form-control" [(ngModel)]="user.password" required minlength="8" maxlength="15">
+            <div *ngIf="password.errors?.['required'] && password.touched" class="text-danger mb-2">Password is required</div>
+            <div *ngIf="password.errors?.['minlength'] && password.touched" class="text-danger mb-2">Password should be between 8 to 15 characters long</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" class="form-control" [(ngModel)]="confirmPwd" required (keyup)="checkPassword()">
+            <div *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched" class="text-danger mb-2">Confirm Password is required</div>
+            <div *ngIf="!isEqual && confirmPassword.touched && !confirmPassword.errors?.['required']" class="text-danger mb-2">Should be same as password</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <div>
+              <label><input type="radio" name="gender" value="male" [(ngModel)]="user.gender">Male </label>&nbsp;
+              <label><input type="radio" name="gender" value="female" [(ngModel)]="user.gender">Female </label>&nbsp;
+              <label><input type="radio" name="gender" value="other" [(ngModel)]="user.gender">Other </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="dob">Birth Date:</label>
+            <input type="date" id="dob" name="dob" class="form-control" [(ngModel)]="user.dob" required>
+          </div>
+        </div>
+      </div>
+      <div class="button">
+        <button type="submit" [disabled]="!signupForm.valid && !isEqual" class="btn btn-primary">Signup</button>
+      </div>
+      <div class="form-group">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+  
+
+
+
