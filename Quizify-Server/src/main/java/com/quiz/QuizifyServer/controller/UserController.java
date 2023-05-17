@@ -3,6 +3,8 @@ package com.quiz.QuizifyServer.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +25,13 @@ public class UserController {
 	private IUserService userService;
 	
 	@GetMapping("userlist")
-	public List<User> displayUser()
+	public List<User> getAllUser()
 	{
 		return userService.getUsers();
 	}
 	
 	@GetMapping("userlist/{UserId}")  
-	public User getUser(@PathVariable("UserId") int id)
+	public User getUserById(@PathVariable("UserId") int id)
 	{
 		User user=userService.getUserById(id);
 		if(user==null)
@@ -39,12 +41,25 @@ public class UserController {
 	return user;
 	}
 	
+	@GetMapping("userlist/email/{email}")  
+	public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email)
+	{
+		User user=userService.getUserByEmail(email);
+		if(user==null)
+		{
+			return new ResponseEntity<String>("Invalid Credentials!!", HttpStatus.NOT_FOUND);
+//			throw new RuntimeException("user not found with the given email");
+		}
+		user.setPassword("");
+		return ResponseEntity.ok(user);
+	}
+	
 	@PostMapping("userlist") 
-	public void insertionUser(@RequestBody User u)
+	public User insertionUser(@RequestBody User u)
 	{
 		u.setId(0);
 		try {
-			userService.insertUser(u);
+			return userService.insertUser(u);
 		} catch(Exception e) {
 			throw new RuntimeException("User Already exists");
 		}

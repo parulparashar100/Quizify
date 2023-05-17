@@ -2,6 +2,8 @@ package com.quiz.QuizifyServer.service.Impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +18,25 @@ public class UserServiceImpl implements IUserService {
 	private IUserRepository userRepo;
 
 	@Override
+	@Transactional
 	public List<User> getUsers() {
 		return userRepo.findAll();
 	}
 
 	@Override
+	@Transactional
 	public User getUserById(Integer id) {
 		return userRepo.findById(id).get();
 	}
 	
 	@Override
+	@Transactional
+	public User getUserByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
+	
+	@Override
+	@Transactional
 	public User insertUser(User user) throws Exception {
 		User local = this.userRepo.findByEmail(user.getEmail());
 		if(local != null) {
@@ -39,11 +50,13 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
+	@Transactional
 	public User updateUser(User user) {
 		return userRepo.save(user);
 	}
 
 	@Override
+	@Transactional
 	public void deleteUser(Integer id) {
 		userRepo.deleteById(id);
 	}

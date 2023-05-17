@@ -10,6 +10,8 @@ public interface IUserService {
 	
 	public User getUserById(Integer id);
 	
+	public User getUserByEmail(String email);
+	
 	public User insertUser(User user) throws Exception;
 	
 	public User updateUser(User user);
