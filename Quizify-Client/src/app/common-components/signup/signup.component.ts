@@ -3,6 +3,7 @@ import { User } from 'src/app/interfaces/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent {
   confirmPwd: string;
   isEqual: boolean = false;
 
-  constructor(private _userService: UserService, private _snackBar: MatSnackBar, private _router: Router) {
+  constructor(private _userService: UserService, private _snackBar: MatSnackBar, private _loginService: LoginService, private _router: Router) {
     this.user = {"id": 0, "firstName": '', "lastName": '', "dob": '', "gender": '', "email": '', "password": '', "status": true, "role": "user"};
 
     this.confirmPwd = '';
@@ -64,7 +65,29 @@ export class SignupComponent {
       // this._userService.getUserById(2).subscribe({
         next: (data) => {
           // console.log((data as User).id);
-          localStorage.setItem("USERID", (data as User).id.toString());
+          this._loginService.generateToken({"email": this.user.email, "password": this.user.password}).subscribe({
+            next: (data)=> {
+              console.log((data as {"token": string}).token);
+              this._loginService.loginUser((data as {"token": string}).token);
+              this._userService.getUserByEmail(this.user.email).subscribe({
+                next: (user) => {
+                  this._loginService.setUserDetail(user);
+                  this._router.navigateByUrl("/user-dashboard");
+                },
+                error: (e)=> {
+                  console.log("Unable to fetch user details");
+                }
+              });
+            },
+            error: (err)=> {
+              console.log(err);
+              this._snackBar.open("Encountered Some Problem", "OK", {
+                duration: 3000,
+                verticalPosition: 'top'
+              });
+            }
+          });
+          // localStorage.setItem("USERID", (data as User).id.toString());
           this._snackBar.open("SignUp Successfull", "OK", {
             duration: 4000,
             verticalPosition: 'top'

@@ -1,1 +1,19 @@
-<h1>Welcome to Quizify</h1>
+<div class="homepage">
+    <header>
+      <h1>Welcome to the <b>Quizify</b></h1>
+    </header>
+    <main>
+
+        <h2>Get ready to test your knowledge with our interactive quizzes.</h2>
+
+      <section>
+        <h3>Let's Get Started</h3>
+        <!--<button *ngIf="!_loginService.isLoggedIn()" (click)="startQuiz()">Start</button>-->
+        <button *ngIf="_loginService.isLoggedIn() && !isAdmin" (click)="startQuiz()">Start</button>
+      </section>
+
+    </main>
+    <footer>
+      <p>&copy; 2023 Online Quiz App. All rights reserved.</p>
+    </footer>
+  </div>

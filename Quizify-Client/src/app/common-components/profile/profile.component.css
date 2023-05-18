@@ -1,0 +1,30 @@
+.container {
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  h1,
+  h2 {
+    margin: 10px;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+    text-align: justify;
+  }
+  
+  .btn-primary {
+    margin-top: 20px;
+  }
+
+  .profile-image {
+    max-width: 150px;
+    max-height: 150px;
+  }

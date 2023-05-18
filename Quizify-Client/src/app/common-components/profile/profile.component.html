@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container text-center">
+      <img src="../assets/images/profile.jfif" alt="" class="profile-image" />
+    </div>
+    <!--<i class="material-icons">person</i>-->
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    <table class="table">
+      <thead>
+        <!--<tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>-->
+      </thead>
+      <tbody>
+        <tr>
+          <td>Email</td>
+          <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td>{{ user.dob | date: "MM-dd-yyyy"}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{ user.gender | titlecase }}</td>
+        </tr>
+        <tr>
+          <td>Role</td>
+          <td>{{ user.authorities[0].authority | titlecase }}</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>{{ status }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="printProfile()">Print</button>
+  </div>
+  

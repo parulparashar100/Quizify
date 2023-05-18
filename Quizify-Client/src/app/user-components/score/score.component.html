@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Quiz Score</h2>
+    <table class="table table-bordered">
+      <tr>
+        
+        <th>Quiz name</th>
+        <th>Max Score</th>
+        <th>Your Score</th>
+        <th>Attempt Date</th>
+      </tr>
+      <tr *ngFor="let s of scores">
+        <td>{{ s.title }}</td>
+        <td>{{ s.maxMarks }}</td>
+        <td>{{ s.score }}</td>
+        <td>{{ s.attemptDate | date: "MM-dd-yyyy"}}</td>
+      </tr>
+    </table>
+</div>
