@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.quiz.QuizifyServer.service.IQuestionService;
 
 @RestController
 @RequestMapping("/question")
+@CrossOrigin(origins ="http://localhost:4200")
 public class QuestionController {
 
 	@Autowired
@@ -40,7 +42,7 @@ public class QuestionController {
 		return ResponseEntity.ok(que);
 	}
 	
-	@GetMapping("questionlist/quiz/{quizId}")
+	@GetMapping("questionlist/quizid/{quizId}")
 	public ResponseEntity<?> getQuestionsByQuizId(@PathVariable("quizId") int quiz_id) {
 		Set<Question> questions = questionService.getQuestionsByQuizId(quiz_id);
 		if (questions == null) {
