@@ -30,7 +30,7 @@ export class HomeComponent {
   startQuiz() {
     if(this._loginService.isLoggedIn())
       // this._router.navigate(['/category']);
-      this._router.navigate(['/login']);
+      this._router.navigate(['/user-dashboard/show-quiz']);
     
     else 
       this._router.navigate(['/login']);

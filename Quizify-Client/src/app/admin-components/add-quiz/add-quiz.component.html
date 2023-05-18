@@ -1,5 +1,5 @@
 <mat-card>
-    <h3>Add New Category</h3>
+    <h3>Add New Quiz</h3>
     <div class="container">
     <mat-card-content>
         <form #addQuizForm="ngForm" (ngSubmit)="addQuiz()">
@@ -18,7 +18,14 @@
               <div class="form-group">
                 <label>Maximum Marks</label>
                 <input type="text" placeholder="Maximum Marks" class="form-control" id="marks" name="marks" #marks="ngModel" [(ngModel)]="quiz.maxMarks" required>
-                <div *ngIf="marks.errors?.['required'] && marks.touched" class="text-danger mb-2">Number of questuons required</div>
+                <div *ngIf="marks.errors?.['required'] && marks.touched" class="text-danger mb-2">Max Marks is required</div>
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select placeholder="Category" class="form-control" id="category" name="category" #category="ngModel" [(ngModel)]="categoryId" required>
+                  <option *ngFor="let c of categories" value={{c.id}}>{{c.name}}</option>
+                </select>
+                <div *ngIf="category.errors?.['required'] && category.touched" class="text-danger mb-2">Category is required</div>
               </div>
 
               <div class="form-group">

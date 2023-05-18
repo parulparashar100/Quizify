@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent {
   public user: User;
   confirmPwd: string;
   isEqual: boolean = false;
+  now: any;
 
   constructor(private _userService: UserService, private _snackBar: MatSnackBar, private _loginService: LoginService, private _router: Router) {
     this.user = {"id": 0, "firstName": '', "lastName": '', "dob": '', "gender": '', "email": '', "password": '', "status": true, "role": "user"};
@@ -22,13 +24,10 @@ export class SignupComponent {
     this.confirmPwd = '';
   }
 
-  // firstName: string = '';
-  // lastName: string = '';
-  // email: string = '';
-  // password: string = '';
-  // confirmPassword: string = '';
-  // gender: string = '';
-  // birthdate : string ='';
+  ngOnInit() {
+    const datePipe = new DatePipe('en-Us');
+    this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
+  }
 
   checkPassword() {
     if(this.user.password === this.confirmPwd) 

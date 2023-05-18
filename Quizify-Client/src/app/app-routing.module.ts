@@ -15,6 +15,7 @@ import { ShowQuizComponent } from './common-components/show-quiz/show-quiz.compo
 import { ScoreComponent } from './user-components/score/score.component';
 import { ShowQuestionsComponent } from './user-components/show-questions/show-questions.component';
 import { AddQuizComponent } from './admin-components/add-quiz/add-quiz.component';
+import { QuizResultComponent } from './user-components/quiz-result/quiz-result.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
     {path: "show-category", component: ShowCategoryComponent},
     {path: "show-quiz", component: ShowQuizComponent},
     {path: "score", component: ScoreComponent},
-    {path: "show-questions/:id", component: ShowQuestionsComponent}
+    {path: "show-questions", component: ShowQuestionsComponent},
+    {path: "quiz-result", component: QuizResultComponent}
   ]}
 ];
 

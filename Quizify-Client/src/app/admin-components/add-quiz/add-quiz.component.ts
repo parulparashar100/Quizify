@@ -14,12 +14,14 @@ export class AddQuizComponent {
 
   quiz: Quiz;
   categories: any;
+  categoryId: string;
 
   constructor(private _quizService: QuizService, private _snackBar: MatSnackBar, private _categoryService: CategoryService) {
     this.quiz = {"id": 0, "title": '', "description": '', "maxMarks": 0,
       "numberOfQuestions": 0,
       "isActive": true,
       "categoryId": 0};
+      this.categoryId = '';
   }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class AddQuizComponent {
   }
 
   addQuiz(){
+    this.quiz.categoryId = parseInt(this.categoryId);
     this._quizService.addQuiz(this.quiz).subscribe({
       next: (data)=> {
         this._snackBar.open("Quiz Added Successfully", "OK", {
@@ -50,12 +53,14 @@ export class AddQuizComponent {
         "categoryId": 0};
       },
       error: (err)=> {
+        console.log(err);
         this._snackBar.open("Error Encountered", "OK", {
           duration: 3000,
           verticalPosition: 'top'
         });
       }
     });
+    
   }
 
 }

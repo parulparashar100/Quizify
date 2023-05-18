@@ -1,4 +1,102 @@
-<div class="container">
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <!-- questions -->
+        <ng-container>
+          <h1 class="mt20">
+            On Going Quiz <b></b>
+          </h1>
+        </ng-container>
+
+        <mat-card class="mt10" >
+          <mat-card-content>
+            <p>
+              <b> JVM stands for:</b>
+              <span class="ml10"></span>
+            </p>
+
+            <mat-divider> </mat-divider>
+            <br />
+
+            <div class="row mt20">
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques1"
+                /> Java Virtual machine 
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques1"
+                /> Java virtual mac
+              </div>
+            </div>
+
+            <div class="row mt20">
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques1"
+                /> JVM
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques1"
+                /> JAVA Machine
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card  class="mt10">
+          <mat-card-content>
+            <p>
+              <b> Which of these method of class String is used to obtain length of String object ?</b>
+              <span class="ml10" ></span>
+            </p>
+
+            <mat-divider> </mat-divider>
+            <br />
+
+            <div class="row mt20">
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques2"
+                /> lenght()
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques2"
+                /> lengthof()
+              </div>
+            </div>
+
+            <div class="row mt20">
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques2"
+                /> sizeof()
+              </div>
+              <div class="col-md-6">
+                <input
+                  type="radio" name="ques2"
+                /> get()
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="container text-center mt20 mb20">
+          <button  mat-raised-button color="primary" routerLink="/user-dashboard/quiz-result">
+            Submit Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container">
     <h3>View Questions</h3>
   
     <div class="question" *ngFor="let question of questions; let i = index">
@@ -23,4 +121,4 @@
       </div>
     </div>
   </div>
-  
+-->

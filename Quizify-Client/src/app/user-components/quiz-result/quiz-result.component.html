@@ -1,0 +1,20 @@
+<div class="bootstrap-wrapper" id="result">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-2">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title> Quiz Result </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="text-center">
+            <h1>Obtained marks : 1</h1>
+            <h1>Correct Answers : 1</h1>
+            <h1>Questions Attempted : 2</h1>
+          </mat-card-content>
+          <mat-card-actions class="text-center">
+            <button mat-raised-button color="primary" (click)="printResult()"> Print </button>&nbsp;
+            <button mat-raised-button color="primary"[routerLink]="'/user-dashboard'"> Home </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

@@ -51,7 +51,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="dob">Birth Date:</label>
-            <input type="date" id="dob" name="dob" class="form-control" [(ngModel)]="user.dob" required>
+            <input type="date" id="dob" name="dob" class="form-control" [(ngModel)]="user.dob" required [max]="now">
           </div>
         </div>
       </div>

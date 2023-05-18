@@ -54,4 +54,10 @@
       justify-content: flex-start;
     }
   }
+
+  @media print {
+    :host {
+      display: none;
+    }
+  }
   

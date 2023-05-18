@@ -76,6 +76,7 @@ public class UserController {
 	@PutMapping("userlist") 
 	public void updationUser(@RequestBody User u)
 	{
+		u.setPassword(passwordEncoder.encode(u.getPassword()));
 		userService.updateUser(u);
 	}
 	

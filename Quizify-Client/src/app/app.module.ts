@@ -32,6 +32,7 @@ import { ShowQuizComponent } from './common-components/show-quiz/show-quiz.compo
 import { ScoreComponent } from './user-components/score/score.component';
 import { ShowQuestionsComponent } from './user-components/show-questions/show-questions.component';
 import { AddQuizComponent } from './admin-components/add-quiz/add-quiz.component';
+import { QuizResultComponent } from './user-components/quiz-result/quiz-result.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddQuizComponent } from './admin-components/add-quiz/add-quiz.component
     ShowQuizComponent,
     ScoreComponent,
     ShowQuestionsComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    QuizResultComponent
   ],
   imports: [
     BrowserModule,

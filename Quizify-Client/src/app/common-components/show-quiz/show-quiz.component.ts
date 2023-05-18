@@ -21,7 +21,8 @@ export class ShowQuizComponent {
   ngOnInit(): void {
     this.setIsAdmin();
     this.getQuizzes();
-    console.log(this.quizzes);
+    for(let q of this.quizzes)
+      console.log(q.id, q.title, q.description);
   }
 
   openQuiz() {
